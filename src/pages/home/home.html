@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="homeBody">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="deslise para actualizar"
+          refreshingSpinner="circles"
+          refreshingText="Atualizando...">
+        </ion-refresher-content>
+      </ion-refresher>
+  <ion-card *ngFor="let post of posters" (click)="verPost(post)">
+  
+    <img src="{{post.img}}">
+    
+    <ion-card-content>
+      <ion-card-title>
+      {{ post.title }}
+      </ion-card-title>
+      <ion-item>
+         <p>{{ post.content }}</p>
+      </ion-item>
+     
+    </ion-card-content>
+  
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+          <ion-icon name="text"></ion-icon>
+          <div>{{post.idComent}} Comentários</div>
+        </button>
+      </ion-col>  
+      <ion-col>
+        <button class="btnGrayColor" ion-button clear small>
+          <!--<div>{{ post.date | amAdd: 2 : 'hours' | amDateFormat: 'DD-MM-YYYY / HH:mm' }}</div>-->
+        </button>
+      </ion-col>
+    </ion-row>
+  
+  </ion-card>
+  <ion-fab right bottom>
+      <button ion-fab color="primary"><ion-icon name="arrow-dropleft"></ion-icon></button>
+      <ion-fab-list side="left">
+        <button ion-fab (click)="openInfo()"><ion-icon name="ios-information-outline"></ion-icon></button>
+        <button ion-fab (click)="openFeedBack()"><ion-icon name="ios-paper-outline"></ion-icon></button>
+      </ion-fab-list>
+  </ion-fab>
+</ion-content>

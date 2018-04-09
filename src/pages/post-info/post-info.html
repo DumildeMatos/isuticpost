@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Visualizar
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <img src="{{post.img}}"/>
+    <ion-card-content>
+    <ion-fab right>
+    <button ion-fab color="primary" (click)="partilhar()"><ion-icon name="md-share"></ion-icon></button>
+    </ion-fab>
+      <ion-card-title>
+       {{post.title}}  
+      </ion-card-title>
+      <p>
+        {{post.content}}
+      </p>
+    </ion-card-content>
+    <ion-list-header>
+        Comentários
+    </ion-list-header>
+
+    <ion-card *ngFor="let comment of comments">
+        <ion-item>
+            <ion-avatar item-start>
+                <img   src="http://localhost/isuticPostAPI/postIMG/pexels-photo-160107.jpeg">
+              </ion-avatar>
+              <h2 >{{comment.nome}}</h2>
+        </ion-item>
+        <ion-card-content>
+            <p >{{comment.coment}}</p>
+          </ion-card-content>
+    </ion-card>
+
+</ion-content>
+<ion-footer>
+    <button ion-button full (click)="CommentModal(post.idPost)">Deixar Comentário</button>
+</ion-footer>
